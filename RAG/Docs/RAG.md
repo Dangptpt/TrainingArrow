@@ -88,4 +88,20 @@ Merge các chunk nhỏ dựa vào hệ thống phân cấp để có context l�
 
 Cơ sở dữ liệu vector là cơ sở dữ liệu phi quan hệ chuyên dụng nhằm lưu trữ, xử lý cũng như truy xuất lượng lớn dữ liệu nhiều chiều ở dạng vector.
 
+# Demo chương trình chatbot đơn giản với RAG
 
+Model embeding: simCSE-Vietnamese [link](https://huggingface.co/VoVanPhuc/sup-SimCSE-VietNamese-phobert-base)
+
+Vector DB:
+* Chunk size: 500
+* Overlap: 50
+
+Retriver: 
+* Search type: Maximum Marginal Relevance
+* search_kwargs: 5
+
+LLM: API Gemini
+
+**Demo:**
+
+![alt text](image-3.png)
