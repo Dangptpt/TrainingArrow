@@ -86,9 +86,9 @@ Merge các chunk nhỏ dựa vào hệ thống phân cấp để có context l�
 
 ## Vector DB
 
-Cơ sở dữ liệu vector là cơ sở dữ liệu phi quan hệ chuyên dụng nhằm lưu trữ, xử lý cũng như truy xuất lượng lớn dữ liệu nhiều chiều ở dạng vector.
+Cơ sở dữ liệu vector là cơ sở dữ liệu phi quan hệ chuyên dụng nhằm lưu trữ, xử lý cũng như truy xuất lượng lớn dữ liệu nhiều chiều ở dạng vector.** Re
 
-# Demo chương trình chatbot đơn giản với RAG
+## Demo chương trình chatbot đơn giản với RAG
 
 Model embeding: simCSE-Vietnamese [link](https://huggingface.co/VoVanPhuc/sup-SimCSE-VietNamese-phobert-base)
 
@@ -105,3 +105,36 @@ LLM: API Gemini
 **Demo:**
 
 ![alt text](image-3.png)
+
+## Reranking
+
+* Khi truy vấn trong kho dữ liệu lớn, sử dụng BM25 để chọn ra top các văn bản liên quam
+* Sau đó sử dụng bi-encoder để lọc lại
+* Sử dụng cross encocer để truy vấn top k văn bản liên quan nhất.
+
+## Self-refine 
+
+![alt text](image-4.png)
+
+Thành phần:
+* Feedback: nhận vào output y0 và cung cấp đánh giá để cải thiện
+* Refine: cải thiện lại yt dựa vào feedback nhận được
+
+Đặc diểm:
+* Vòng lặp feedback -> refine -> feedback -> ...
+* Self-refine lưu trữ lịch sử bằng cách nối các output trước vào prompt.
+
+![alt text](image-5.png)
+
+## Chain of Thought
+
+Đưa các chuỗi suy luận phức tạp vào prompt 
+
+Zeroshot COT prompting: ví dụ thêm vào đoạn prompt "Let's think step by step" vào prompt gốc 
+
+Fewshot COT prompting: Thêm các ví dụ cụ thể để suy luận ra kết quả vào prompt
+
+Automatic COT: bao gồm 2 stage:
+* Stage 1: phân cụm các câu hỏi 
+* Stage 2: chọn các câu hỏi đại diện mỗi cụm và sinh chuỗi suy luận từ zero shot CoT
+
