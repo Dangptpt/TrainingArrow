@@ -4,6 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.retrievers import BM25Retriever
 import gradio as gr
 
 import os
@@ -19,12 +20,16 @@ vector_store = FAISS.load_local("RAG_Pipeline/vectordb", embeddings, allow_dange
 
 prompt_template = """
 Bạn là trợ lý cho các nhiệm vụ trả lời câu hỏi, hãy trả lời bằng tiếng Việt, lịch sự và thân thiện.
-Hãy trả lời câu hỏi dựa trên dữ liệu có trong đoạn ngữ cảnh.
+Hãy trả lời câu hỏi dựa trên dữ liệu có trong đoạn ngữ cảnh và lịch sử đoạn chat.
 Hãy trả lời không biết nếu như bạn không thấy thông tin trong đoạn ngữ cảnh, đừng cố gắng trả lời
 Đoạn ngữ cảnh: {context}
 Câu hỏi: {question}
 Câu trả lời:
 """
+
+question = "quy định về đình chỉ học tập"
+
+print(vector_store)
 
 QA_CHAIN_PROMPT = PromptTemplate.from_template(prompt_template)
 qa_chain = RetrievalQA.from_chain_type(
@@ -40,7 +45,7 @@ def gennerate(question):
     return response['result']
 
 with gr.Blocks() as demo:
-    chatbot = gr.Chatbot(height=700)
+    chatbot = gr.Chatbot(height=600)
     msg = gr.Textbox()
     clear = gr.ClearButton([msg, chatbot])
 
@@ -53,3 +58,4 @@ with gr.Blocks() as demo:
 
 if __name__ == "__main__":
     demo.launch()
+

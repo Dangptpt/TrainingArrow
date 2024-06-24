@@ -138,3 +138,36 @@ Automatic COT: bao gồm 2 stage:
 * Stage 1: phân cụm các câu hỏi 
 * Stage 2: chọn các câu hỏi đại diện mỗi cụm và sinh chuỗi suy luận từ zero shot CoT
 
+## Important parameters of LLM
+
+1. **Context Window**
+
+Tham số context window xác định số lượng token đầu vào mà mô hình sẽ sinh output. Điều chỉnh context window có thể kiểm soát mức độ ngữ cảnh mà mô hình xem xét khi tạo đầu ra. Context window nhỏ hơn tập trung vào ngữ cảnh ngay lập tức, trong khi context windown lớn hơn cung cấp ngữ cảnh rộng hơn. 
+
+2. **Max Tokens**
+
+Max tokens là tham số xác định số lượng token lớn nhất được sinh ra. 
+
+3. **Temperature**
+
+Temperature là tham số điều khiển độ randomize của output. Temperature nằm trong khoảng [0, 1], với t = 1 mô hình sẽ ngẫu nhiên và đa dạng khi sinh văn bản. Với t thấp hơn thì sẽ sinh ra những phản hổi chắc chắn hơn.
+
+![alt text](image-6.png)
+
+4. **Top P**
+
+Top P, còn được gọi là lấy mẫu xác suất, xác định phân bố xác suất tích lũy được sử dụng để sinh ra token tiếp theo. Ví dụ, với top p=0.9, mô hình sẽ chọn từ tập hợp các token mà tổng xác suất của chúng đạt 90%
+
+5. **Top N**
+
+Top N la tham số xác định số lượng token tiềm năng hàng đầu từ đó mô hình chọn lựa token tiếp theo. Ví dụ, top n=50 nghĩa là mô hình sẽ chọn token tiếp theo từ 50 token có xác suất cao nhất.
+
+![alt text](image-7.png)
+
+6. **Presence Penalty**
+
+Presence penalty là tham số để ngăn model đề cập đến một từ nhất định ở output.
+
+7. **Frequency Penalty**
+
+Frequency penalty là tham số để điều chỉnh độ lặp từ ở output. Tham số này giúp sinh ra văn bản một cách đa dạng hơn
