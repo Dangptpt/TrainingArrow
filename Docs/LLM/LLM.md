@@ -48,7 +48,7 @@ Có thể giải quyết vấn đề gradient vanishing và train tuần tự c�
 
 Sử dụng các pretrained model để học chuyển giao trong NLP. Với RNN ta chỉ có thể kế thừa lại word embedding model, hay còn gọi là cách tiếp cận nông. Còn với kiến trức transformer ta ko chỉ chuyển giao đặc trưng và còn có thể học chuyển giao các layer sâu hơn của mô hình.
 
-## Important parameters of LLM
+# Important parameters of LLM
 
 1. **Context Window**
 
@@ -81,3 +81,13 @@ Presence penalty là tham số để ngăn model đề cập đến một từ n
 7. **Frequency Penalty**
 
 Frequency penalty là tham số để điều chỉnh độ lặp từ ở output. Tham số này giúp sinh ra văn bản một cách đa dạng hơn
+
+# Large Action Model
+
+Large Action Model (LAM) là một kiến trúc mô hình lớn được thiết kế để xử lý các hành động (actions) phức tạp bằng cách chuyển ý định của con người thành hành động. 
+
+Để đạt được mức độ ra quyết định phức tạp LAM sẽ học từ một lượng data khổng lồ với thông in hành động của người dùng.
+
+### Context length
+
+Độ dài ngữ cảnh là số lượng token mô hình sử dụng để dự đoán ra từ tiếp theo.
