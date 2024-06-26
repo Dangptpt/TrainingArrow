@@ -20,7 +20,6 @@ vector_store = FAISS.load_local("RAG_Pipeline/vectordb", embeddings, allow_dange
 
 prompt_template = """
 Bạn là trợ lý cho các nhiệm vụ trả lời câu hỏi, hãy trả lời bằng tiếng Việt, lịch sự và thân thiện.
-Hãy trả lời câu hỏi dựa trên dữ liệu có trong đoạn ngữ cảnh và lịch sử đoạn chat.
 Hãy trả lời không biết nếu như bạn không thấy thông tin trong đoạn ngữ cảnh, đừng cố gắng trả lời
 Đoạn ngữ cảnh: {context}
 Câu hỏi: {question}
