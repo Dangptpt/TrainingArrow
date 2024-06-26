@@ -90,4 +90,15 @@ Large Action Model (LAM) là một kiến trúc mô hình lớn được thiết
 
 ### Context length
 
-Độ dài ngữ cảnh là số lượng token mô hình sử dụng để dự đoán ra từ tiếp theo.
+Độ dài ngữ cảnh là số lượng token mô hình sử dụng để dự đoán ra từ tiếp theo. Độ dài ngữ cảnh là yếu quan trọng vì nó quyết định khă năng hiểu ngữ cảnh, nắm bắt thông tin của mô hình.
+
+## Cách tăng context length
+
+Các hướng tiếp cận:
+* AliBi method
+* Position Interpolation
+* NTK Interpolation 
+
+LongLora: Efficient Fine-tuning of Long-context Large Language Models
+
+
