@@ -101,4 +101,55 @@ Các hướng tiếp cận:
 
 LongLora: Efficient Fine-tuning of Long-context Large Language Models
 
+## ReAct & Raise
 
+ReAct (reason + act) được lấy cảm hứng từ sự phối hợp giữa "action" và "reasoning", cho phép con người học các nhiệm vụ mới và đưa ra quyết định hoặc lý luận.
+
+Prompt (CoT) đã cho thấy khả năng của LLM trong việc thực hiện truy vết lý luận nhằm tạo ra câu trả lời cho các câu hỏi liên quan đến lý luận số học, .., cùng với các nhiệm vụ khác. Nhưng việc thiếu khả năng tiếp cận với thế giới bên ngoài hoặc không có khả năng cập nhật kiến ​​thức có thể dẫn đến các vấn đề như ảo giác.
+
+ReAct là một mô hình chung kết hợp lý luận và hành động với LLM. ReAct nhắc LLM tạo ra các dấu vết lý luận bằng lời nói và hành động cho một nhiệm vụ. Điều này cho phép hệ thống thực hiện lý luận để tạo, duy trì và điều chỉnh các kế hoạch hành động đồng thời cho phép tương tác với môi trường bên ngoài để kết hợp thông tin bổ sung vào lý luận.
+
+![alt text](image-2.png)
+
+Raise là cải tiến của ReAct, kết hợp một hệ thống bộ nhớ hai thành phần, phản chiếu trí nhớ ngắn hạn và dài hạn của con người, để duy trì bối cảnh và tính liên tục
+trong các cuộc trò chuyện. Nó đòi hỏi một kịch bản xây dựng n toàn diện, bao gồm các giai đoạn như lựa chọn cuộc hội thoại, trích xuất ngữ cảnh, CoT và tăng cường ngữ cảnh
+
+![alt text](image-3.png)
+
+## Autogen
+
+AutoGen là một khung cho phép phát triển các ứng dụng LLM bằng cách sử dụng nhiều tác tử có thể giao tiếp với nhau để giải quyết các nhiệm vụ. Các tác tử AutoGen có thể tùy chỉnh, có thể chuyển đổi và cho phép con người tham gia một cách liền mạch. Chúng có thể hoạt động ở nhiều chế độ khác nhau sử dụng kết hợp LLM, đầu vào của con người và công cụ.
+
+**Chat termination**
+
+Các tham số điều chỉnh chat termination:
+* max_turns: giới hạn số lượng trả về
+* max_consecutive_auto_reply: điều kiện kích hoạt termination nếu số lượt phản hồi từ 1 sender quá ngưỡng
+* is_termination_msg: kích hoạt khi câu trả lời có chứa termination message
+
+**Human Input Modes**
+
+Ba chế độ cho human input:
+* Never: không yêu cầu
+* Terminate: human input yêu cầu khi terinatation được kích hoạt
+* Always: luôn luôn yêu cầu request  
+
+Two-Agent Chat and Chat Result
+
+![alt text](image-4.png)
+
+Sequential Chats
+
+![alt text](image-5.png)
+
+Group chat
+
+Group chat manager dùng một số chiến lược để chọn tác tử tiếp theo:
+* round robin
+* random
+* manual
+* auto
+
+![alt text](image-8.png)
+
+Nested Chats
