@@ -66,17 +66,17 @@ Temperature là tham số điều khiển độ randomize của output. Temperat
 
 4. **Top P**
 
-Top P, còn được gọi là lấy mẫu xác suất, xác định phân bố xác suất tích lũy được sử dụng để sinh ra token tiếp theo. Ví dụ, với top p=0.9, mô hình sẽ chọn từ tập hợp các token mà tổng xác suất của chúng đạt 90%
+Top P còn được gọi là lấy mẫu xác suất, xác định phân bố xác suất tích lũy được sử dụng để sinh ra token tiếp theo. Ví dụ, với top p=0.9, mô hình sẽ chọn từ tập hợp các token mà tổng xác suất của chúng đạt 90%
 
 5. **Top N**
 
-Top N la tham số xác định số lượng token tiềm năng hàng đầu từ đó mô hình chọn lựa token tiếp theo. Ví dụ, top n=50 nghĩa là mô hình sẽ chọn token tiếp theo từ 50 token có xác suất cao nhất.
+Top N là tham số xác định số lượng token tiềm năng hàng đầu từ đó mô hình chọn lựa token tiếp theo. Ví dụ, top n=50 nghĩa là mô hình sẽ chọn token tiếp theo từ 50 token có xác suất cao nhất.
 
 ![alt text](image-7.png)
 
 6. **Presence Penalty**
 
-Presence penalty là tham số để ngăn model đề cập đến một từ nhất định ở output.
+Presence penalty là tham số để ngăn model đề cập đến một từ nhất định ở output. Khác với frequency penalty, penalty bằng nhau với tất cả repeated token 
 
 7. **Frequency Penalty**
 
@@ -100,6 +100,8 @@ Các hướng tiếp cận:
 * NTK Interpolation 
 
 LongLora: Efficient Fine-tuning of Long-context Large Language Models
+
+# AI Agent
 
 ## ReAct & Raise
 
@@ -153,3 +155,47 @@ Group chat manager dùng một số chiến lược để chọn tác tử tiế
 ![alt text](image-8.png)
 
 Nested Chats
+
+# Hệ sinh thái Hugging Face
+
+Hugging Face là một công ty và nền tảng nổi tiếng trong lĩnh vực trí tuệ nhân tạo (AI). Hệ sinh thái của Hugging Face bao gồm nhiều công cụ, thư viện, và dịch vụ hỗ trợ việc phát triển và triển khai các mô hình AI.
+
+**Thư viện Transformer**
+
+Transformers là thư viện mã nguồn mở nổi tiếng nhất của Hugging Face. Nó cung cấp các mô hình học sâu (deep learning) cho nhiều nhiệm vụ NLP như dịch thuật, tóm tắt, trả lời câu hỏi, phân loại văn bản, ...
+
+**Dataset**
+
+Datasets là một thư viện mã nguồn mở khác của Hugging Face giúp dễ dàng tải, xử lý, và chia sẻ các tập dữ liệu.
+
+Hơn 1000 tập dữ liệu: Cung cấp nhiều tập dữ liệu đa dạng cho các nhiệm vụ khác nhau như NLP, thị giác máy tính, ...
+
+**Model HUb**
+
+Model Hub là một kho lưu trữ lớn các mô hình AI được huấn luyện sẵn mà người dùng có thể tải về và sử dụng hoặc huấn luyện lại.
+
+**API**
+
+Hugging Face cung cấp các dịch vụ API để sử dụng các mô hình AI trong ứng dụng thực tế.
+
+## Pretrained model
+
+Pretrained models là các mô hình đã được huấn luyện trước trên một tập dữ liệu lớn và đa dạng. Mục đích của việc huấn luyện trước là để mô hình học các biểu diễn (representations) chung của dữ liệu, từ đó có thể được tinh chỉnh thêm cho các nhiệm vụ cụ thể hơn
+
+## Supervised Fine-Tuning (SFT)
+
+SFT là quá trình tinh chỉnh một mô hình pretrained cho một nhiệm vụ cụ thể bằng cách sử dụng một tập dữ liệu có gắn nhãn (labeled data).
+
+## Reinforcement Learning with Human Feedback (RLHF)
+
+RLHF là một phương pháp huấn luyện mô hình AI sử dụng học tăng cường kết hợp với phản hồi từ con người để cải thiện hiệu suất mô hình.
+
+Các bước của RLHF:
+* Sử dụng một pre-trained language model
+* Thu thập dữ liệu train reward model
+* Fine-tune LM băng reward model
+
+Quá trình train reward model
+* Thu thập data bằng nhiều LM khác nhau
+* Sinh hàng loạt văn bản với cùng một prompt, con người đánh giá các văn bản này.
+* Sử dụng PPO để để fine tune RL model

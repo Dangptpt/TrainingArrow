@@ -138,3 +138,5 @@ Automatic COT: bao gồm 2 stage:
 * Stage 1: phân cụm các câu hỏi 
 * Stage 2: chọn các câu hỏi đại diện mỗi cụm và sinh chuỗi suy luận từ zero shot CoT
 
+# Multimodal RAG
+
