@@ -12,11 +12,12 @@ number = 0
 # loop over our contours
 for c in contours:
     (x, y, w, h) = cv2.boundingRect(c)
+
     print(x, y, w, h)
     # approximate the contour
     if (85<w<150) and(100<h<150):
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        number +=1
+        number += 1
 
 print(f"Number of Contours found = {number}" )
 
