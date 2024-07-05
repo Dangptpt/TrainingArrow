@@ -199,3 +199,10 @@ Quá trình train reward model
 * Thu thập data bằng nhiều LM khác nhau
 * Sinh hàng loạt văn bản với cùng một prompt, con người đánh giá các văn bản này.
 * Sử dụng PPO để để fine tune RL model
+
+## GGUF
+
+Llama.cpp là một dự án của Georgi Gerganov nhằm chuyển mô hình Llama sang C/C++. Điều này đã loại bỏ sự phức tạp do PyTorch giới thiệu và việc triển khai gốc cho phép thực hiện lượng tử hóa trực tiếp. Do đó, mô hình kết quả có thể chạy với lượng tử hóa số nguyên lên tới 4 bit, cho phép chạy các mô hình Llama có số lượng tham số cao mà không cần GPU chuyên dụng
+
+GGUF là định dạng tệp của Llama.cpp để lưu trữ và truyền thông tin mô hình. Các mô hình lượng tử hóa được lưu trữ ở định dạng này để người dùng cuối có thể tải và chạy chúng. GGUF là định dạng kế thừa của GGML và nhằm mục đích cải thiện GGML bằng cách cung cấp nhiều khả năng mở rộng hơn, khả năng tương thích ngược và độ ổn định trong khi vẫn cho phép phát triển nhanh chóng.
+
