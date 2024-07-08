@@ -156,6 +156,28 @@ Group chat manager dùng một số chiến lược để chọn tác tử tiế
 
 Nested Chats
 
+## Crew AI
+
+![alt text](image-9.png)
+
+**Sequential Multi-agent system**
+
+![alt text](image-10.png)
+
+Ở đây, giả sử chúng ta có một hệ thống LLM agent có nhiệm vụ và nhận đầu vào là một topic và đầu ra sẽ là một bài báo về topic đó. Và chúng ta sẽ có 3 agent để thực hiện nhiệm vụ này là Researcher Agent, Writier Agent và Publisher Agent.
+
+* Đầu tiên, sẽ thực hiện thu thập các thông tin, dữ liệu về topic đó. Chúng ta sẽ sử dụng Researcher Agent để để truy cập vào các tools như web search, từ đó agent này sẽ thu thập tất cả các nội dung, dữ liệu về topic trên internet và tổng hợp chúng lại.
+
+* Bước tiếp theo, chúng ta sẽ tử dụng Writier Agent để thực hiện viết nội dung cho topic đó, dựa vào những gì đã thu thập được trên internet.
+
+* Bước cuối cùng là kiểm tra xem bài viết có phù hợp để đăng không, vd. kiểm tra đạo văn, ngữ pháp, v.v. rồi đăng nó. Chúng ta có Publisher Agent sẽ phụ trách nhiệm vụ này và sau khi hoàn thành bài báo sẽ được xuất bản.
+
+**Hierarchical Multi-agent system**
+
+![alt text](image-11.png)
+
+Nếu như đối với Sequential Multi-agent chúng ta xử lý các nhiệm vụ theo quá trình tuần tự các agent sẽ tự giao tiếp với nhau và sửa lỗi, điều này giống như việc trong một team làm việc mà không có người leader vậy. Ngược lại, đối với Hierarchical Multi-agent nó sẽ tạo ra một con manager agent, con agent này sẽ đảm nhiệm nhiệm vụ của một người leader, nó sẽ phụ trách việc điều phối công việc, giao task cho các agent cấp thấp hơn và đánh giá kết quả.
+
 # Hệ sinh thái Hugging Face
 
 Hugging Face là một công ty và nền tảng nổi tiếng trong lĩnh vực trí tuệ nhân tạo (AI). Hệ sinh thái của Hugging Face bao gồm nhiều công cụ, thư viện, và dịch vụ hỗ trợ việc phát triển và triển khai các mô hình AI.
