@@ -18,7 +18,7 @@ Kết hợp truy vấn dựa trên độ tương đồng cosin và điểm số 
 ## Overview
 <div style="text-align: center;">
 
-<img src="images/rerank_llm.svg" alt="rerank llm" style="width:40%; height:auto;">
+<img src="images/rerank_llm.svg" alt="rerank llm" style="width:20%; height:20%;">
 </div>
 ### Method details
 1. Bộ truy xuất ban đầu
@@ -39,7 +39,7 @@ Kết hợp truy vấn dựa trên độ tương đồng cosin và điểm số 
 
 <div style="text-align: center;">
 
-<img src="images/rerank_llm.svg" alt="rerank llm" style="width:40%; height:auto;">
+<img src="images/rerank_llm.svg" alt="rerank llm" style="width:20%; height:auto;">
 </div>
 
 ## Query Transformations
@@ -57,7 +57,8 @@ Ba kỹ thuật biến đổi truy vấn để nâng cao quá trình truy xuất
 
 #### Rewrite
 Sử dụng LLM để viết lại truy vấn chi tiết hơn.
-#**Prompt:** 
+
+**Prompt:** 
 
     You are an AI assistant tasked with reformulating user queries to improve retrieval in a RAG system. 
     Given the original query, rewrite it to be more specific, detailed, and likely to retrieve relevant information.
@@ -68,7 +69,8 @@ Sử dụng LLM để viết lại truy vấn chi tiết hơn.
 
 #### Step-back prompt
 Sử dụng LLM để tạo ra truy vấn tổng quát hơn 
-#**Prompt:** 
+
+**Prompt:** 
 
     You are an AI assistant tasked with reformulating user queries to improve retrieval in a RAG system. 
     Given the original query, rewrite it to be more specific, detailed, and likely to retrieve relevant information.
@@ -79,7 +81,8 @@ Sử dụng LLM để tạo ra truy vấn tổng quát hơn
 
 #### Sub-query decomposition
 Sử dụng LLM để phân tách truy vấn ban đầu thành nhiều truy vấn nhỏ hơn, mỗi truy vấn mang một ngữ nghĩa riêng.
-#**Prompt:** 
+
+**Prompt:** 
     You are an AI assistant tasked with breaking down complex queries into simpler sub-queries for a RAG system.
     Given the original query, decompose it into 2-4 simpler sub-queries that, when answered together, would provide a comprehensive response to the original query.
 
@@ -98,7 +101,7 @@ Sử dụng LLM để phân tách truy vấn ban đầu thành nhiều truy vấ
 Tạo ra hệ thống phân cấp nhiều tầng để điều hướng và truy xuất kết quả đối với các tài liệu lớn
 <div style="text-align: center;">
 
-<img src="images/hierarchical_indices.svg" alt="hierarchical_indices" style="width:50%; height:auto;">
+<img src="images/hierarchical_indices.svg" alt="hierarchical_indices" style="width:40%; height:auto;">
 </div>
 
 ### Method details
@@ -112,24 +115,31 @@ Tạo ra hệ thống phân cấp nhiều tầng để điều hướng và truy
 Chuyển đổi các câu hỏi truy vấn thành các tài liệu giả định chứa câu trả lời. Cải thiện nhược điểm với RAG có truy vấn ngắn và tài liệu dài. Mở rộng truy vấn thành một tài liệu giả định đầy đủ, có thể cải thiện sự phù hợp của việc truy xuất bằng cách làm cho biểu diễn tương tự với các biểu diễn trong vector DB
 <div style="text-align: center;">
 
-<img src="images/HyDe.svg" alt="HyDe" style="width:40%; height:auto;">
+<img src="images/HyDe.svg" alt="HyDe" style="width:35%; height:auto;">
 </div>
 
 ### Method details
 Sử dụng LLM để tạo ra các tài liệu giả định
-#### Prompt template
+**Prompt template**
     Given the question '{query}', generate a hypothetical document that directly answers this question. The document should be detailed and in-depth. The document size has be exactly {chunk_size} characters
 
 ## Contextual Compression
+
 ### Overview
 Nén ngữ cảnh trong hệ thống RAG, cải thiện sự phù hợp của thông tin truy xuất, chỉ trích xuất ra các phần liên quan của tài liệu, dẫn đến việc truy xuất thông tin hiệu quả hơn cũng khắc phục nhược điểm mất thổng tin với ngữ cảnh dài của các mô hình LLM (lost in the middle).
 
 <div style="text-align: center;">
 
-<img src="images/contextual_compression.svg" alt="contextual compression" style="width:70%; height:auto;">
+<img src="images/contextual_compression.svg" alt="contextual compression" style="width:35%; height:auto;">
 </div>
 
 ### Method details
+
+1. Nhúng và lưu trữ tài liệu văn bản vào vector DB
+
+2. Xây dựng bộ nén ngữ cảnh dựa trên LLM
+
+3. Truy xuất thông tin kết hợp bộ nén ngữ cảnh để trích xuất ra những thông tin chính cho việc sinh phản hồi.
 
 ## Adaptive retrievals
 ### Overview
@@ -206,18 +216,16 @@ Thực hiện truy xuất dựa trên truy vấn có ngữ cảnh.
 ## Graph RAG
 
 ### Over view
-Đồ thị RAG xử lý tài liệu đầu vào để tạo ra một đồ thị kiến thức. Hệ thống biểu diễn kiến thức dưới dạng một đồ thị liên kết, cho phép duyệt thông tin thông minh hơn tỏng quá tình truy vấn.
+Đồ thị RAG xử lý tài liệu đầu vào để tạo ra một đồ thị kiến thức. Hệ thống biểu diễn kiến thức dưới dạng một đồ thị liên kết, cho phép duyệt thông tin thông minh hơn
 
 <div style="text-align: center;">
 
 <img src="images/graph_rag.svg" alt="graph RAG" style="width:100%; height:auto;">
 </div>
 
-## Method details
+### Method details
 
 1. Xây dựng vector DB
-
-Chia tài liệu đầu vào thành các đoạn nhỏ, nhúng và đưa vào vector DB
 
 2. Xây dựng đồ thị kiến thức 
 
@@ -268,3 +276,57 @@ Hiển thị:
    - Đường đi được duyệt để trả lời một truy vấn được tô sáng bằng các mũi tên cong, đứt nét.
 
    - Các nút bắt đầu và kết thúc của việc duyệt được tô màu rõ ràng để dễ dàng nhận dạng.
+
+## Self-RAG
+### Overview 
+Self-RAG là kỹ thuật để hệ thống RAG quyết định có sử dụng thông tin đã truy xuất ra.
+
+<div style="text-align: center;">
+
+<img src="images/self_rag.svg" alt="Self RAG" style="width:60%; height:auto;">
+</div>
+
+### Method details
+1. Quyết định truy xuất
+
+Prompt:
+
+    Given the query '{query}', determine if retrieval is necessary. Output only 'Yes' or 'No'.
+
+2. Truy xuất tài liệu và đánh giá sự liên quan
+
+Truy xuất các tài liệu và dùng LLM để đánh giá sự liên quan
+
+Prompt:
+
+    Given the query '{query}' and the context '{context}', determine if the context is relevant. Output only 'Relevant' or 'Irrelevant'
+
+3. Sinh câu trả lời, đánh giá độ hỗ trợ và tính hữu dụng của phản hồi được sinh ra
+
+Support_prompt:
+
+    Given the response '{response}' and the context '{context}', determine if the response is supported by the context. Output 'Fully supported', 'Partially supported', or 'No support'
+
+Utility_Prompt:
+
+    Given the query '{query}' and the response '{response}', rate the utility of the response from 1 to 5.
+
+## Raptor
+
+### Overview
+
+Raptor là một hệ thống RAG kết hợp tóm tắt tài liệu theo cấp bậc, chuyên biệt xử lý cho các tài liệu lớn.
+
+<div style="text-align: center;">
+
+<img src="images/raptor.svg" alt="RAPTOR" style="width:60%; height:auto;">
+</div>
+
+### Method details
+1. Xây dựng cây phân cấp 
+
+* Bắt đầu với level 0: nhúng tài liệu, phân cụm các tài liệu đã nhúng và tạo tóm tắt cho từng cụm
+
+* Dùng những tóm tắt này làm văn bản cho level tiếp theo
+
+2. Tiếp tục cho đến cấp độ tối đa hoặc chỉ còn một tóm tắt
